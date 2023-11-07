@@ -1,13 +1,12 @@
 [
     {
-        "id": 1,
-        "firstName": "Terry",
-        "lastName": "Medhurst",
-        "email": "atuny0@sohu.com",
-        "phone": "+63 791 675 8914",
-        "username": "atuny0",
-        "password": "9uQFF1Lh",
-        "birthDate": "2000-12-25",
-        "occupation": ""
-    }
+        "firstName": "Gabriel",
+        "lastName": "Stima",
+        "email": "gabriel@gabriel.com",
+        "phone": "91999999999",
+        "password": "$2b$10$tfEeG4G/XlJXSkPNR/lrRe808xrEkjkda.e048afn.AKnG8mZ7iUy",
+        "birthDate": "07/07/1998",
+        "occupation": "Mark",
+        "id": "844ebb3d-54b6-4d9f-981b-23dbcda449f7"
+      }
 ]

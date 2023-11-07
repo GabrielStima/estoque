@@ -8,7 +8,7 @@ module.exports = app => {
         .get(controller.findUser);
 
     app.route('/api/v1/user/login')
-        .get(controller.login);
+        .post(controller.login);
 
     app.route('/api/v1/user')
         .post(controller.createUser);

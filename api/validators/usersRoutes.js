@@ -1,8 +1,11 @@
 const Joi = require('joi');
 
 const listUsers = Joi.object();
-const findUser = Joi.object();
-const login = Joi.object();
+const findUser = Joi.object({});
+const login = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(8).max(16).required()
+});
 const createUser = Joi.object({
     firstName: Joi.string().max(16).required(),
     lastName: Joi.string().max(16).required(),
@@ -15,4 +18,4 @@ const createUser = Joi.object({
 const updateUser = Joi.object();
 const deleteUser = Joi.object();
 
-module.exports = { listUsers, findUser, createUser, updateUser, deleteUser }
+module.exports = { listUsers, findUser, createUser, updateUser, deleteUser, login }

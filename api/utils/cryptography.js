@@ -7,12 +7,10 @@ const createHash = (password) => {
     return hash;
 }
 
-const comparePass = (password, hash) => {
-    if (cryptography.comparePass(password, hash)) {
-        return true;
-    }else{
-        return false;
-    }
+const comparePass = async (password, hash) => {
+    const match = await bcrypt.compare(password, hash);
+
+    return match;
 }
 
 module.exports = { createHash, comparePass }

@@ -3,16 +3,12 @@ const config = require('config');
 
 const verifyToken = (token) => {
     try {
-        const validate = jwt.verify(token, config.get('server.secret'));
-        console.log(validate)
-        if (validate.exp > Date.now()) {
-            throw new Error('JWT is expired');
-        }
+        jwt.verify(token, config.get('server.secret'));
 
         return true;
-
       } catch(err) {
-        return err;
+        console.error(err)
+        return false;
       }
 }
 

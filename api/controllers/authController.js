@@ -1,14 +1,15 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const cryptography = require('../utils/cryptography');
-const validator = require('../validators/authRoutes');
+const authValidator = require('../validators/authRoutes');
+const authentication = require('../utils/authentication');
 
 module.exports = app => {
     const usersDB = app.data.usersDB;
     const controller = {};
 
     controller.login = async (req, res) => {
-        const { error, value } = validator.login.validate(req.body);
+        const { error, value } = authValidator.login.validate(req.body);
     
         if (error) {
             return res.status(400).json({
@@ -27,7 +28,7 @@ module.exports = app => {
                     status: "success",
                     data: {
                         token: jwt.sign({ id: user[0].id }, config.get('server.secret'), {
-                            expiresIn: "1h"
+                            expiresIn: 120
                           })
                     }
                 }) 
@@ -38,6 +39,32 @@ module.exports = app => {
                 });
             }
         } 
+    };
+
+    controller.validateToken = (req, res) => {
+        const token = req.headers['authorization'];
+        const { error } = authValidator.headerValidate.validate({'authorization': token});
+
+        if (error) {
+            return res.status(400).json({
+                status: "error",
+                error: error.details[0].message
+            });
+        } else {
+            const validateToken = authentication.verifyToken(token);
+
+            if(!validateToken){
+                return res.status(401).json({
+                    status: "error",
+                    data: validateToken
+                });
+            }
+
+            return res.status(200).json({
+                status: "sucess",
+                data: validateToken
+            });
+        }
     };
 
     return controller;

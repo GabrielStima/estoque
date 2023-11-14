@@ -12,20 +12,19 @@ module.exports = app => {
     controller.findUser = (req, res) => res.status(200).json(usersDB);
     controller.createUser = (req, res) => {
         const token = req.headers['authorization'];
-        const { error } = authValidator.headerValidate.validate(token);
+        const { error } = authValidator.headerValidate.validate({'authorization': token});
         const validateToken = authentication.verifyToken(token);
 
-        console.log('validate token', validateToken)
-
-        if (error || !validateToken) {
-            return res.status(404).json({ 
+        if (!token || error || !validateToken) {
+            return res.status(401).json({ 
                 status: "error",
                 error: "Error of autentication"
             });
         } else {
             const { error, value } = userValidator.createUser.validate(req.body);
             value.id = uuid.getUuid();
-            value.password = cryptography.createHash(value.body.password);
+            value.password = cryptography.createHash(value.password);
+            console.log(value)
     
             if (error) {
                 return res.status(400).json({ 

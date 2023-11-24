@@ -8,5 +8,15 @@
         "birthDate": "07/07/1998",
         "occupation": "Mark",
         "id": "844ebb3d-54b6-4d9f-981b-23dbcda449f7"
+      },
+      {
+        "firstName": "Antony",
+        "lastName": "Vitor",
+        "email": "antony@antony.com",
+        "phone": "91999999999",
+        "password": "$2b$10$lRNO6J2r.kPg2n3nAT5HnOny2zPUJ9HzZN/JhL9odeVZcv0RcFeMK",
+        "birthDate": "07/07/1998",
+        "occupation": "Mark",
+        "id": "5201f60f-d3c0-49e1-a028-fcaf565d38a9"
       }
 ]

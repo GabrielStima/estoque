@@ -4,15 +4,15 @@ module.exports = app => {
     app.route('/api/v1/users')
         .get(controller.listUsers);
 
-    app.route('/api/v1/user')
+    app.route('/api/v1/user/:id')
         .get(controller.findUser);
 
     app.route('/api/v1/user')
         .post(controller.createUser);
     
-    app.route('/api/v1/user')
+    app.route('/api/v1/user/:id')
         .put(controller.updateUser);
 
-    app.route('/api/v1/user')
+    app.route('/api/v1/user/:id')
         .delete(controller.deleteUser);
 }

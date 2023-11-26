@@ -19,10 +19,9 @@ module.exports = app => {
             "category": item.category
         }))
 
-        return res.send({
-            status: "success",
-            data: response
-        })
+        return res.status(200).send(
+            response
+        )
     };
     controller.findProduct = (req, res) => {
         authentication.validateToken(req.headers['authorization'], res);
@@ -42,16 +41,14 @@ module.exports = app => {
         })
 
         if (!response) {
-            return res.send({
-                status: "not found",
-                data: "Data not found"
+            return res.status(404).send({
+                message: "Data not found"
             })
         }
 
-        return res.send({
-            status: "success",
-            data: response
-        })
+        return res.status(200).send(
+            response
+        )
     };
     controller.createProduct = (req, res) => {
         authentication.validateToken(req.headers['authorization'], res);
@@ -61,14 +58,12 @@ module.exports = app => {
 
         if (error) {
             return res.status(400).json({
-                status: "error",
-                error: error.details[0].message
+                message: error.details[0].message
             });
         } else {
-            return res.send({
-                status: "success",
-                data: value
-            })
+            return res.status(200).send(
+                value
+            )
         }
     };
     controller.updateProduct = (req, res) => {
@@ -78,20 +73,18 @@ module.exports = app => {
 
         if (error) {
             return res.status(400).json({
-                status: "error",
-                error: error.details[0].message
+                message: error.details[0].message
             });
         } else {
             const response = productsDB.find(item => {
                 if (item.id === req.params.id) {
-                    return res.send("ok");
+                    return res.status(200).send(value);
                 }
             })
 
             if (!response) {
-                return res.send({
-                    status: "not found",
-                    data: "Data not found"
+                return res.status(404).send({
+                    message: "Data not found"
                 })
             }
         }
@@ -107,8 +100,7 @@ module.exports = app => {
 
         if (!response) {
             return res.status(404).send({
-                status: "fail",
-                data: "Data not found"
+                message: "Data not found"
             })
         }
 

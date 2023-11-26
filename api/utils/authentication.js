@@ -19,8 +19,7 @@ const validateToken = (token, res) => {
 
   if (!token || error || !validateToken) {
     return res.status(401).json({
-      status: "error",
-      error: "Error of autentication"
+      message: "Error of autentication"
     });
   }
 }

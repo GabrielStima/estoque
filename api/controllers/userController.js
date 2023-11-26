@@ -20,39 +20,26 @@ module.exports = app => {
             "occupatio": item.occupation
         }))
 
-        return res.send({
-            status: "success",
-            data: response
-        })
+        return res.status(200).send(
+            response
+        )
     };
     controller.findUser = (req, res) => {
         authentication.validateToken(req.headers['authorization'], res);
 
-        const response = usersDB.find(item => {
-            if (item.id === req.params.id) {
-                return {
-                    "id": item.id,
-                    "firstName": item.firstName,
-                    "lastName": item.lastName,
-                    "email": item.email,
-                    "phone": item.phone,
-                    "birthDate": item.birthDate,
-                    "occupatio": item.occupation
-                }
-            }
-        })
+        const response = usersDB.find(item => item.id === req.params.id)
 
         if (!response) {
-            return res.send({
-                status: "not found",
-                data: "Data not found"
+            return res.status(404).send({
+                message: "Data not found"
             })
         }
 
-        return res.send({
-            status: "success",
-            data: response
-        })
+        delete response.password;
+
+        return res.status(200).send(
+            response
+        )
     };
     controller.createUser = (req, res) => {
         authentication.validateToken(req.headers['authorization'], res);
@@ -63,14 +50,12 @@ module.exports = app => {
 
         if (error) {
             return res.status(400).json({
-                status: "error",
-                error: error.details[0].message
+                message: error.details[0].message
             });
         } else {
-            return res.send({
-                status: "success",
-                data: value
-            })
+            return res.status(200).send(
+                value
+            )
         }
     }
     controller.updateUser = (req, res) => {
@@ -80,20 +65,18 @@ module.exports = app => {
 
         if (error) {
             return res.status(400).json({
-                status: "error",
-                error: error.details[0].message
+                message: error.details[0].message
             });
         } else {
             const response = usersDB.find(item => {
                 if (item.id === req.params.id) {
-                    return res.send("ok");
+                    return res.status(200).send(value);
                 }
             })
 
             if (!response) {
-                return res.send({
-                    status: "not found",
-                    data: "Data not found"
+                return res.status(404).send({
+                    message: "Data not found"
                 })
             }
         }
@@ -109,8 +92,7 @@ module.exports = app => {
 
         if (!response) {
             return res.status(404).send({
-                status: "fail",
-                data: "Data not found"
+                message: "Data not found"
             })
         }
 

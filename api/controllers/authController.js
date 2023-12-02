@@ -25,7 +25,7 @@ module.exports = app => {
             if (await cryptography.comparePass(value.password, user[0].password)) {
                 return res.status(200).json({
                     token: jwt.sign({ id: user[0].id }, config.get('server.secret'), {
-                        expiresIn: 120
+                        expiresIn: 300
                     })
                 })
             } else {

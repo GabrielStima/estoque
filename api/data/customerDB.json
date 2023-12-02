@@ -1,0 +1,18 @@
+[
+    {
+        "firstName": "Gabriel",
+        "lastName": "Stima",
+        "email": "gabriel@gabriel.com",
+        "phone": "91999999999",
+        "birthDate": "07/07/1998",
+        "id": "d15a2df4-345e-4a30-9dbb-decae1b03e63"
+    },
+    {
+        "firstName": "Antony",
+        "lastName": "Oloko",
+        "email": "antony@antony.com",
+        "phone": "91999999999",
+        "birthDate": "07/07/1998",
+        "id": "11d8be0a-840d-47b3-bdac-929456bdcb01"
+    }
+]

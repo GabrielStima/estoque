@@ -11,7 +11,7 @@ module.exports = app => {
         .post(controller.createCustomer);
     
     app.route('/api/v1/customer/:id')
-        .put(controller.updateCustomer);
+        .patch(controller.updateCustomer);
 
     app.route('/api/v1/customer/:id')
         .delete(controller.deleteCustomer);

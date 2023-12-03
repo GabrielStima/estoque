@@ -11,7 +11,7 @@ module.exports = app => {
         .post(controller.createProduct);
     
     app.route('/api/v1/product/:id')
-        .put(controller.updateProduct);
+        .patch(controller.updateProduct);
 
     app.route('/api/v1/product/:id')
         .delete(controller.deleteProduct);

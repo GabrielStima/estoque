@@ -25,13 +25,13 @@ module.exports = app => {
             }
 
             const user = getUser();
-            console.log(value)
             if (await cryptography.comparePass(value.password, user.password)) {
                 return res.status(200).json({
                     token: jwt.sign({ ...user }, config.get('server.secret'), {
                         expiresIn: 300
                     }),
-                    ref: user.id
+                    ref: user.id,
+                    per: user.profile
                 })
             } else {
                 return res.status(400).json({

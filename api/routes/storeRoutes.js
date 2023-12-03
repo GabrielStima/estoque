@@ -14,7 +14,7 @@ module.exports = app => {
         .post(controller.createStore);
     
     app.route('/api/v1/store/:id')
-        .put(controller.updateStore);
+        .patch(controller.updateStore);
 
     app.route('/api/v1/store/:id')
         .delete(controller.deleteStore);

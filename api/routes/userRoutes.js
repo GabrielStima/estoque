@@ -11,7 +11,7 @@ module.exports = app => {
         .post(controller.createUser);
     
     app.route('/api/v1/user/:id')
-        .put(controller.updateUser);
+        .patch(controller.updateUser);
 
     app.route('/api/v1/user/:id')
         .delete(controller.deleteUser);

@@ -3,6 +3,7 @@ const config = require('config');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const consign = require('consign');
+const cors = require('cors');
 
 module.exports = () => {
     const app = express();
@@ -13,12 +14,7 @@ module.exports = () => {
     app.use(bodyParser.json())
     app.use(morgan('dev'))
 
-    app.use((req, res, next) => {
-        res.setHeader('Access-Control-Allow-Origin', '*')
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization')
-        next()
-    })
+    app.use(cors());
 
     consign({cwd: 'api'})
         .then('data')

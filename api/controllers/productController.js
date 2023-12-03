@@ -12,7 +12,6 @@ module.exports = app => {
         const response = productsDB.map(item => ({
             "id": item.id,
             "title": item.title,
-            "description": item.description,
             "price": item.price,
             "stock": item.stock,
             "brand": item.brand,
@@ -31,7 +30,6 @@ module.exports = app => {
                 return {
                     "id": item.id,
                     "title": item.title,
-                    "description": item.description,
                     "price": item.price,
                     "stock": item.stock,
                     "brand": item.brand,

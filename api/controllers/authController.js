@@ -17,16 +17,21 @@ module.exports = app => {
             });
         } else {
             const getUser = () => {
-                return usersDB;
+               return usersDB.find(element => {
+                    if (element.email === value.email) {
+                        return element
+                    }
+                });
             }
 
             const user = getUser();
-
-            if (await cryptography.comparePass(value.password, user[0].password)) {
+            console.log(value)
+            if (await cryptography.comparePass(value.password, user.password)) {
                 return res.status(200).json({
-                    token: jwt.sign({ id: user[0].id }, config.get('server.secret'), {
+                    token: jwt.sign({ ...user }, config.get('server.secret'), {
                         expiresIn: 300
-                    })
+                    }),
+                    ref: user.id
                 })
             } else {
                 return res.status(400).json({

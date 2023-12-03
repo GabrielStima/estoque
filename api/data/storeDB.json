@@ -2,14 +2,14 @@
     {
         "id":"e04d807c-5848-4941-bafb-f557170b6634",
         "cnpj": "50774045000191",
-        "name": "Guilherme",
+        "name": "Caixa Fideral",
         "address": "Rua Aqui",
         "customerId": "d15a2df4-345e-4a30-9dbb-decae1b03e63"
     },
     {
         "id":"9270edae-fbdb-4dde-b111-f00f4fee7b4d",
         "cnpj": "34236137000161",
-        "name": "Lucas",
+        "name": "Caixas Bacia",
         "address": "Rua La",
         "customerId": "d15a2df4-345e-4a30-9dbb-decae1b03e63"
     }

@@ -17,7 +17,7 @@ module.exports = app => {
             "email": item.email,
             "phone": item.phone,
             "birthDate": item.birthDate,
-            "occupatio": item.occupation
+            "profile": item.profile
         }))
 
         return res.status(200).send(

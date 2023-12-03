@@ -2,7 +2,6 @@
     {
         "id": "c1bd8a7b-43b4-42cc-9aa8-769b33fcc5af",
         "title": "iPhone 9",
-        "description": "An apple mobile which is nothing like apple",
         "price": 549,
         "stock": 94,
         "brand": "Apple",
@@ -11,7 +10,6 @@
     {
         "id": "2",
         "title": "iPhone 10",
-        "description": "An apple mobile which is nothing like apple",
         "price": 549,
         "stock": 94,
         "brand": "Apple",
@@ -20,7 +18,6 @@
     {
         "id": "3",
         "title": "iPhone 11",
-        "description": "An apple mobile which is nothing like apple",
         "price": 549,
         "stock": 94,
         "brand": "Apple",

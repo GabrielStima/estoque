@@ -7,7 +7,7 @@ const createUser = Joi.object({
     phone: Joi.string().length(11).pattern(/^[0-9]+$/).required(),
     password: Joi.string().min(8).max(16).required(),
     birthDate: Joi.string().required(),
-    occupation: Joi.string().required()
+    profile: Joi.string().required()
 });
 const updateUser = Joi.object({
     firstName: Joi.string().max(16).required(),
@@ -16,7 +16,7 @@ const updateUser = Joi.object({
     phone: Joi.string().length(11).pattern(/^[0-9]+$/).required(),
     password: Joi.string().min(8).max(16).required(),
     birthDate: Joi.string().required(),
-    occupation: Joi.string().required()
+    profile: Joi.string().required()
 });
 
 module.exports = { createUser, updateUser }
